@@ -1,12 +1,12 @@
 from django.db import models
-from ..users.models import User
+from users.models import User
 
 # Create your models here.
 
 
 class Tweet(models.Model):
     payload = models.TextField(max_length=180)
-    user = models.ForeignKey()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateField()
     updated_at = models.DateField()
     
