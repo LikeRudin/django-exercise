@@ -6,9 +6,16 @@ from .models import Tweet, Like
 class TweetAdmin(admin.ModelAdmin):
     list_display = (
         "payload",
-        "users",
+        "user",
         "created_at",
         "updated_at",
+    )
+    list_search = (
+        "payload",
+        "user__username",
+    )
+    list__filter= (
+        "created_at",
     )
 
 
@@ -19,4 +26,10 @@ class LikeAdmin(admin.ModelAdmin):
         "user",
         "created_at",
         "updated_at",
+    )
+    list_search = (
+        "user__username",
+    )
+    list_filter= (
+        "created_at",
     )
