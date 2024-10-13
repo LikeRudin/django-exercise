@@ -5,8 +5,8 @@ from users.models import User
 class Tweet(models.Model):
     payload = models.TextField(max_length=180)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateField()
-    updated_at = models.DateField()
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
     likes = models.ManyToManyField(User, through='Like', related_name='liked_tweets')
     
     def __str__(self) -> str:
